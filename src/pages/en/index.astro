@@ -1,108 +1,370 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { Server, Shield, Globe, Phone, Mail, ArrowRight } from 'lucide-astro';
+import { 
+  Server, Shield, Globe, Phone, Mail, ArrowRight, 
+  Trophy, Building2, Users, Truck, Cpu, Database, 
+  CheckCircle2, ChevronRight, MessageSquare, Zap
+} from 'lucide-astro';
+
+const stats = [
+  { label: 'Years Experience', value: '15+', icon: Trophy, color: 'text-blue-500' },
+  { label: 'Clients Served', value: '2000+', icon: Building2, color: 'text-cyan-500' },
+  { label: 'Certified Engineers', value: '50+', icon: Users, color: 'text-indigo-500' },
+  { label: 'Spare Parts In Stock', value: '10000+', icon: Truck, color: 'text-blue-600' },
+];
 
 const services = [
   {
-    title: "Dell Warranty Extension",
-    desc: "Official Dell ProSupport & ProSupport Plus renewal services for Servers, Storage, and Workstations.",
-    icon: Shield
+    title: "Official Warranty Extension",
+    desc: "Extend your hardware lifecycle with official Dell ProSupport & ProSupport Plus. We handle the entire renewal process for you.",
+    icon: Shield,
+    link: "/haodell/services/server-warranty"
   },
   {
-    title: "Enterprise Hardware",
-    desc: "Authorized reseller of Dell PowerEdge Servers, Precision Workstations, and EMC Storage solutions.",
-    icon: Server
+    title: "AI & High-Performance Computing",
+    desc: "Specialized in local deployment of LLMs like DeepSeek and Llama 3. We provide pre-configured AI workstations and GPU servers.",
+    icon: Zap,
+    link: "/haodell/knowledge/deepseek-deployment-guide"
   },
   {
-    title: "IT Support & Maintenance",
-    desc: "24/7 on-site support in Shanghai. 2-hour emergency response for critical hardware failures.",
-    icon: Phone
+    title: "Enterprise Hardware Solutions",
+    desc: "Authorized reseller of Dell PowerEdge Servers, Precision Workstations, and PowerVault Storage with customizable configurations (CTO).",
+    icon: Server,
+    link: "/haodell/products"
+  }
+];
+
+const products = [
+  {
+    title: "PowerEdge R760",
+    desc: "Next-gen 2U rack server optimized for AI inference and core database workloads.",
+    image: "/haodell/images/products/r760.png",
+    category: "Server"
+  },
+  {
+    title: "Precision 7960 Tower",
+    desc: "Ultimate performance for AI development, 3D rendering, and video editing.",
+    image: "/haodell/images/products/precision-7960.png",
+    category: "Workstation"
+  },
+  {
+    title: "PowerVault ME5024",
+    desc: "Affordable, enterprise-grade SAN/DAS storage with up to 640K IOPS.",
+    image: "/haodell/images/products/me5024.png",
+    category: "Storage"
   }
 ];
 ---
 
-<Layout title="HaoDell - Authorized Dell Partner & Warranty Services in Shanghai">
-  <div class="bg-theme-bg min-h-screen text-theme-text transition-colors duration-300">
+<Layout title="HaoDell Global | Authorized Dell Partner & Enterprise IT Solutions in Shanghai">
+  <div class="bg-theme-bg min-h-screen text-theme-text selection:bg-theme-accent selection:text-white">
     <!-- English Header -->
-    <header class="bg-theme-surface/80 backdrop-blur-md shadow-sm sticky top-0 z-[60] border-b border-theme-border transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="/haodell/" class="flex items-center gap-2 group">
-          <img src="/haodell/logo.png" alt="HaoDell Logo" class="h-8 w-auto object-contain" />
-          <div class="text-2xl font-bold text-theme-text tracking-tight transition-colors duration-300">上海皓戴<span class="text-theme-accent text-sm ml-2">Global</span></div>
+    <header class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <a href="/haodell/en" class="flex items-center gap-3 group">
+          <img src="/haodell/logo.png" alt="HaoDell Logo" class="h-10 w-auto object-contain" />
+          <div class="flex flex-col">
+            <span class="text-xl font-bold tracking-tight text-white">HAODELL <span class="text-theme-accent text-sm ml-1 italic">Global</span></span>
+            <span class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Shanghai IT Solutions Provider</span>
+          </div>
         </a>
-        <a href="/haodell/" class="flex items-center text-theme-muted hover:text-theme-accent transition text-sm font-medium">
-          <Globe class="w-4 h-4 mr-1" />
-          中文官网
-        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+          <a href="#services" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+          <a href="#products" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
+          <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+          <div class="w-px h-4 bg-white/10"></div>
+          <a href="/haodell/" class="flex items-center text-slate-400 hover:text-white transition text-xs font-bold uppercase tracking-widest">
+            <Globe class="w-3.5 h-3.5 mr-1.5" />
+            中文官网
+          </a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="tel:400-888-8888" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-theme-accent hover:bg-theme-accent-hover text-white text-sm font-bold shadow-lg shadow-theme-accent/20 transition-all">
+            <Phone class="w-4 h-4" />
+            400-888-8888
+          </a>
+        </div>
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="relative bg-theme-bg text-theme-text py-24 overflow-hidden transition-colors duration-300">
-      <!-- Background Effects -->
-      <div class="absolute inset-0 z-0 transition-colors duration-300">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-theme-accent/20 rounded-full blur-3xl opacity-60"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-theme-border/40 rounded-full blur-3xl opacity-60"></div>
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-24 bg-slate-900 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900"></div>
+      <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-blue-500 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500 rounded-full blur-[120px]"></div>
       </div>
       
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="inline-block px-4 py-1.5 rounded-full bg-theme-surface border border-theme-border text-theme-accent text-sm font-medium mb-6 shadow-sm transition-colors duration-300">
-          Official Dell Partner
-        </div>
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight text-theme-text transition-colors duration-300">
-          Trusted Dell Partner <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-theme-accent to-cyan-500">in Shanghai</span>
-        </h1>
-        <p class="text-xl text-theme-muted max-w-2xl mb-10 leading-relaxed transition-colors duration-300">Providing enterprise-grade Dell hardware solutions and official warranty extension services for foreign businesses in China.</p>
-        <div class="flex gap-4">
-          <a href="#contact" class="px-8 py-4 bg-theme-accent hover:bg-theme-accent-hover text-white rounded-full font-bold transition shadow-lg shadow-theme-accent/30">Contact Us</a>
-          <a href="mailto:support@haodell.com" class="px-8 py-4 bg-theme-surface hover:bg-theme-bg border border-theme-border text-theme-muted rounded-full font-bold transition shadow-sm transition-colors duration-300">Email Inquiry</a>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-8">
+              Authorized Dell & Lenovo Partner
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
+              Powering Your Enterprise <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Infrastructure in China</span>
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl mb-12 leading-relaxed">
+              Based in Shanghai, HaoDell provides world-class IT hardware, official warranty extensions, and professional AI deployment services for global businesses operating in China.
+            </p>
+            <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+              <a href="#contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl shadow-blue-600/30 flex items-center gap-2">
+                Inquiry Now <ArrowRight class="w-5 h-5" />
+              </a>
+              <a href="#services" class="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-xl transition-all backdrop-blur-md">
+                Explore Services
+              </a>
+            </div>
+          </div>
+          <div class="hidden lg:block flex-1 relative">
+            <div class="absolute -inset-10 bg-blue-500/20 rounded-full blur-[80px] opacity-50"></div>
+            <img src="/haodell/images/products/r760.png" alt="Dell Server" class="relative w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-700" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="py-24 bg-theme-surface transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-8">
-          {services.map(item => (
-            <div class="bg-theme-surface p-8 rounded-2xl border border-theme-border hover:shadow-xl hover:shadow-theme-accent/10 transition-all hover:-translate-y-1 transition-colors duration-300">
-              <div class="w-14 h-14 bg-theme-bg text-theme-accent rounded-xl flex items-center justify-center mb-6 transition-colors duration-300">
-                <item.icon class="w-7 h-7" />
-              </div>
-              <h3 class="text-xl font-bold text-theme-text mb-3 transition-colors duration-300">{item.title}</h3>
-              <p class="text-theme-muted leading-relaxed transition-colors duration-300">{item.desc}</p>
+    <!-- Stats Section -->
+    <section id="about" class="py-12 bg-theme-surface border-b border-theme-border relative z-20 -mt-8 mx-4 lg:mx-auto max-w-6xl rounded-3xl shadow-2xl">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map(stat => (
+            <div class="text-center group p-4">
+              <stat.icon class={`w-8 h-8 mx-auto mb-4 ${stat.color} group-hover:scale-110 transition-transform`} />
+              <div class="text-3xl font-extrabold text-theme-text mb-1 tracking-tight">{stat.value}</div>
+              <div class="text-[10px] font-bold text-theme-muted uppercase tracking-widest">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="bg-theme-bg py-24 border-t border-theme-border transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold mb-12 text-theme-text transition-colors duration-300">Get in Touch</h2>
-        <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-left">
-          <div class="group flex items-center gap-6 p-6 bg-theme-surface border border-theme-border rounded-2xl hover:shadow-lg hover:shadow-theme-accent/10 transition-all transition-colors duration-300">
-            <div class="p-4 bg-theme-bg rounded-full text-theme-accent group-hover:bg-theme-accent group-hover:text-white transition-colors duration-300">
-              <Phone class="w-6 h-6" />
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-theme-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl font-bold text-theme-text mb-4 tracking-tight">One-Stop IT Services</h2>
+          <p class="text-theme-muted max-w-2xl mx-auto">From hardware procurement to full-lifecycle maintenance and AI optimization.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {services.map(item => (
+            <div class="bg-theme-surface p-10 rounded-3xl border border-theme-border hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+              <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <item.icon class="w-8 h-8" />
+              </div>
+              <h3 class="text-2xl font-bold text-theme-text mb-4">{item.title}</h3>
+              <p class="text-theme-muted leading-relaxed mb-8">{item.desc}</p>
+              <a href={item.link} class="inline-flex items-center text-blue-600 font-bold hover:gap-2 transition-all">
+                Learn More <ChevronRight class="w-4 h-4 ml-1" />
+              </a>
             </div>
-            <div>
-              <div class="text-sm text-theme-muted uppercase tracking-wider font-semibold transition-colors duration-300">English Hotline</div>
-              <div class="text-2xl font-bold text-theme-text transition-colors duration-300">400-888-8888</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section id="products" class="py-32 bg-theme-surface border-y border-theme-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+          <div class="max-w-2xl">
+            <h2 class="text-4xl font-bold text-theme-text mb-4 tracking-tight">Core Infrastructure</h2>
+            <p class="text-theme-muted">Official Dell Technologies hardware with expert pre-sales consulting and post-sales support.</p>
+          </div>
+          <a href="/haodell/products" class="px-6 py-3 bg-theme-bg border border-theme-border rounded-xl font-bold text-theme-text hover:border-blue-500 transition-all flex items-center gap-2">
+            View All Products <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {products.map(product => (
+            <div class="flex flex-col bg-theme-bg rounded-3xl overflow-hidden border border-theme-border group hover:shadow-xl transition-all">
+              <div class="aspect-[4/3] bg-white p-8 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <img src={product.image} alt={product.title} class="relative w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="p-8">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-widest">{product.category}</div>
+                <h3 class="text-xl font-bold text-theme-text mb-3">{product.title}</h3>
+                <p class="text-theme-muted text-sm leading-relaxed mb-6">{product.desc}</p>
+                <a href="/haodell/products" class="text-sm font-bold text-theme-text hover:text-blue-600 flex items-center">
+                  Request Quote <ChevronRight class="w-4 h-4 ml-1" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-32 bg-theme-bg overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+          <div class="relative">
+            <div class="absolute -inset-10 bg-blue-600/10 rounded-full blur-[100px]"></div>
+            <div class="grid grid-cols-2 gap-6 relative">
+              <div class="space-y-6 pt-12">
+                <div class="bg-theme-surface p-8 rounded-3xl border border-theme-border shadow-lg">
+                  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                    <Shield class="w-6 h-6" />
+                  </div>
+                  <h4 class="font-bold mb-2">Original Warranty</h4>
+                  <p class="text-xs text-theme-muted">Official Dell ProSupport services for 3-5 years.</p>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-white/10 shadow-2xl text-white">
+                  <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                    <Users class="w-6 h-6" />
+                  </div>
+                  <h4 class="font-bold mb-2">Expert Team</h4>
+                  <p class="text-xs text-slate-400">Ex-Dell engineers with top industry certifications.</p>
+                </div>
+              </div>
+              <div class="space-y-6">
+                <div class="bg-theme-surface p-8 rounded-3xl border border-theme-border shadow-lg">
+                  <div class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                    <Truck class="w-6 h-6" />
+                  </div>
+                  <h4 class="font-bold mb-2">Quick Response</h4>
+                  <p class="text-xs text-theme-muted">2-hour on-site response in Shanghai core areas.</p>
+                </div>
+                <div class="bg-theme-surface p-8 rounded-3xl border border-theme-border shadow-lg">
+                  <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                    <CheckCircle2 class="w-6 h-6" />
+                  </div>
+                  <h4 class="font-bold mb-2">Compliance</h4>
+                  <p class="text-xs text-theme-muted">Full VAT invoices and legal contract support.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="group flex items-center gap-6 p-6 bg-theme-surface border border-theme-border rounded-2xl hover:shadow-lg hover:shadow-theme-accent/10 transition-all transition-colors duration-300">
-            <div class="p-4 bg-theme-bg rounded-full text-theme-accent group-hover:bg-theme-accent group-hover:text-white transition-colors duration-300">
-              <Mail class="w-6 h-6" />
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6">
+              Our Value Proposition
             </div>
-            <div>
-              <div class="text-sm text-theme-muted uppercase tracking-wider font-semibold transition-colors duration-300">Email Support</div>
-              <div class="text-2xl font-bold text-theme-text transition-colors duration-300">service@haodell.com</div>
+            <h2 class="text-4xl font-bold text-theme-text mb-8 tracking-tight leading-tight">
+              We Don't Just Sell Boxes, <br/>
+              <span class="text-blue-600">We Provide Peace of Mind.</span>
+            </h2>
+            <div class="space-y-6 mb-12">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mt-1">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <p class="text-theme-muted">Lifecycle support from initial consultation to end-of-life recycling.</p>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mt-1">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <p class="text-theme-muted">Extensive local inventory for urgent hardware replacement.</p>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mt-1">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <p class="text-theme-muted">Dedicated account managers for international companies in China.</p>
+              </div>
             </div>
+            <a href="#contact" class="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl shadow-blue-600/30">
+              Start a Conversation
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Contact & Map -->
+    <section id="contact" class="py-32 bg-slate-900 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-20">
+          <div>
+            <h2 class="text-4xl font-bold mb-8 tracking-tight">Contact Our Global Team</h2>
+            <p class="text-slate-400 text-lg mb-12">Whether you need a quick quote or a complex architectural consultation, we're here to help.</p>
+            
+            <div class="space-y-10">
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
+                  <Phone class="w-7 h-7" />
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">24/7 Hotline</div>
+                  <div class="text-3xl font-bold text-white tracking-tight">400-888-8888</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10">
+                  <Mail class="w-7 h-7" />
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Email Inquiry</div>
+                  <div class="text-2xl font-bold text-white tracking-tight">service@haodell.com</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10">
+                  <Globe class="w-7 h-7" />
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Headquarters</div>
+                  <div class="text-lg font-bold text-white">No. 3300 Zhongshan North Rd, Shanghai, China</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+            <h3 class="text-2xl font-bold mb-8">Send a Message</h3>
+            <form class="space-y-6">
+              <div class="grid grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Name</label>
+                  <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Your Name" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Company</label>
+                  <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Company Name" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Email</label>
+                <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="email@company.com" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Message</label>
+                <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="How can we help you?"></textarea>
+              </div>
+              <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 transition-all">
+                Send Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+          <div class="flex items-center gap-3">
+            <img src="/haodell/logo.png" alt="HaoDell Logo" class="h-8 w-auto opacity-50 grayscale" />
+            <span class="text-lg font-bold text-slate-500">HAODELL Global</span>
+          </div>
+          <div class="flex gap-8 text-sm text-slate-500 font-medium">
+            <a href="#about" class="hover:text-white transition-colors">About</a>
+            <a href="#services" class="hover:text-white transition-colors">Services</a>
+            <a href="#products" class="hover:text-white transition-colors">Products</a>
+            <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-white/5 text-xs text-slate-600">
+          &copy; 2025 Shanghai HaoDell Information Technology Co., Ltd. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
   </div>
 </Layout>
