@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { ArrowRight, Calendar, User, Tag } from 'lucide-astro';
+import { ArrowRight, Calendar, User, Tag, BookOpen } from 'lucide-astro';
 
 const posts = (await getCollection('posts')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
