@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { 
   Server, Shield, Globe, Phone, Mail, ArrowRight, 
   Trophy, Building2, Users, Truck, Cpu, Database, 
-  CheckCircle2, ChevronRight, MessageSquare, Zap
+  CheckCircle2, ChevronRight, MessageSquare, Zap,
+  Laptop, ShieldCheck
 } from 'lucide-astro';
 
 const stats = [
@@ -21,14 +22,20 @@ const services = [
     link: "/haodell/services/server-warranty"
   },
   {
-    title: "AI & High-Performance Computing",
+    title: "Global Alienware Support",
+    desc: "Premium warranty extension and international support for Alienware laptops. Keep your gaming powerhouse protected globally.",
+    icon: Laptop,
+    link: "/haodell/services/workstation-warranty"
+  },
+  {
+    title: "AI & HPC Deployment",
     desc: "Specialized in local deployment of LLMs like DeepSeek and Llama 3. We provide pre-configured AI workstations and GPU servers.",
     icon: Zap,
     link: "/haodell/knowledge/deepseek-deployment-guide"
   },
   {
-    title: "Enterprise Hardware Solutions",
-    desc: "Authorized reseller of Dell PowerEdge Servers, Precision Workstations, and PowerVault Storage with customizable configurations (CTO).",
+    title: "Enterprise Solutions",
+    desc: "Authorized reseller of Dell PowerEdge Servers, Precision Workstations, and PowerVault Storage with customizable configurations.",
     icon: Server,
     link: "/haodell/products"
   }
@@ -148,15 +155,15 @@ const products = [
           <h2 class="text-4xl font-bold text-theme-text mb-4 tracking-tight">One-Stop IT Services</h2>
           <p class="text-theme-muted max-w-2xl mx-auto">From hardware procurement to full-lifecycle maintenance and AI optimization.</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map(item => (
-            <div class="bg-theme-surface p-10 rounded-3xl border border-theme-border hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+            <div class="bg-theme-surface p-8 lg:p-10 rounded-3xl border border-theme-border hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group flex flex-col">
               <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 <item.icon class="w-8 h-8" />
               </div>
-              <h3 class="text-2xl font-bold text-theme-text mb-4">{item.title}</h3>
-              <p class="text-theme-muted leading-relaxed mb-8">{item.desc}</p>
-              <a href={item.link} class="inline-flex items-center text-blue-600 font-bold hover:gap-2 transition-all">
+              <h3 class="text-xl lg:text-2xl font-bold text-theme-text mb-4 leading-tight">{item.title}</h3>
+              <p class="text-theme-muted leading-relaxed mb-8 text-sm lg:text-base flex-grow">{item.desc}</p>
+              <a href={item.link} class="inline-flex items-center text-blue-600 font-bold hover:gap-2 transition-all mt-auto">
                 Learn More <ChevronRight class="w-4 h-4 ml-1" />
               </a>
             </div>
@@ -254,6 +261,12 @@ const products = [
                   <CheckCircle2 class="w-4 h-4" />
                 </div>
                 <p class="text-theme-muted">Lifecycle support from initial consultation to end-of-life recycling.</p>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mt-1">
+                  <ShieldCheck class="w-4 h-4" />
+                </div>
+                <p class="text-theme-muted">Official Global Warranty Extension for Alienware laptops & workstations.</p>
               </div>
               <div class="flex gap-4">
                 <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mt-1">
