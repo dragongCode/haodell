@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { ArrowLeft, CheckCircle2, MessageSquare, ShieldCheck, Cpu, HardDrive, Zap } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map(product => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const { Content } = await product.render();
+---
+
+<Layout title={`${product.data.title} | 皓戴产品中心`} keywords={`${product.data.title}, ${product.data.category}, Dell服务器报价`}>
+  <!-- Breadcrumb & Back -->
+  <div class="bg-theme-bg border-b border-theme-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <a href="/#products" class="inline-flex items-center text-theme-muted hover:text-blue-600 transition-colors">
+        <ArrowLeft class="w-4 h-4 mr-2" />
+        返回产品列表
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="bg-theme-bg py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Image -->
+        <div class="relative group">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+          <div class="relative bg-theme-surface rounded-2xl overflow-hidden border border-theme-border shadow-2xl aspect-[4/3]">
+            <img 
+              src={product.data.image} 
+              alt={product.data.title}
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            {product.data.badge && (
+              <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                {product.data.badge}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <div class="text-blue-600 font-bold mb-2 uppercase tracking-wide">{product.data.category}</div>
+          <h1 class="text-4xl lg:text-5xl font-bold text-theme-text mb-6">{product.data.title}</h1>
+          <p class="text-xl text-theme-muted mb-8 leading-relaxed">
+            {product.data.description}
+          </p>
+
+          <!-- Key Specs Preview -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {product.data.specs.slice(0, 4).map(spec => (
+              <div class="flex items-start p-3 rounded-lg bg-theme-surface border border-theme-border">
+                <CheckCircle2 class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" />
+                <div>
+                  <div class="text-xs text-theme-muted uppercase font-bold">{spec.label}</div>
+                  <div class="text-sm font-medium text-theme-text">{spec.value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-1">
+              <MessageSquare class="w-5 h-5 mr-2" />
+              获取详细报价
+            </a>
+            <a href="#specs" class="flex items-center justify-center px-8 py-4 bg-theme-surface border border-theme-border hover:border-blue-500 text-theme-text font-bold rounded-xl transition-all hover:shadow-md">
+              查看完整参数
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content & Specs -->
+  <section id="specs" class="py-20 bg-theme-surface border-t border-theme-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold text-theme-text mb-8 flex items-center">
+            <Zap class="w-6 h-6 text-blue-500 mr-3" />
+            产品详情
+          </h2>
+          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+            <Content />
+          </div>
+        </div>
+
+        <!-- Specs Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="bg-theme-bg rounded-2xl p-6 border border-theme-border sticky top-24">
+            <h3 class="text-xl font-bold text-theme-text mb-6 flex items-center">
+              <Cpu class="w-5 h-5 text-blue-500 mr-2" />
+              技术规格
+            </h3>
+            <div class="space-y-4">
+              {product.data.specs.map(spec => (
+                <div class="pb-4 border-b border-theme-border last:border-0">
+                  <dt class="text-sm text-theme-muted mb-1">{spec.label}</dt>
+                  <dd class="font-medium text-theme-text">{spec.value}</dd>
+                </div>
+              ))}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-theme-border">
+              <div class="flex items-center mb-4 text-green-600 dark:text-green-400">
+                <ShieldCheck class="w-5 h-5 mr-2" />
+                <span class="font-bold text-sm">提供 3-5 年原厂保修</span>
+              </div>
+              <p class="text-xs text-theme-muted">
+                * 具体配置和价格请咨询销售顾问，支持按需定制 (CTO)。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

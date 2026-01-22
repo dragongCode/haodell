@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PhoneCall, Clock, MapPin, ShieldAlert, CheckCircle2, Siren, ArrowRight } from 'lucide-astro';
+---
+
+<Layout title="紧急救援 | 服务器宕机 2 小时极速上门 | 上海皓戴" keywords="服务器维修, Dell服务器急救, 2小时上门, 宕机恢复">
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-red-900 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-800 via-red-900 to-black opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 text-sm font-bold uppercase tracking-wider mb-8 animate-pulse">
+        <Siren class="w-4 h-4" />
+        Emergency Rescue Service
+      </div>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight">
+        服务器宕机？<br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500">我们已经在路上了</span>
+      </h1>
+      <p class="text-2xl text-red-100 max-w-3xl mx-auto mb-12">
+        上海全境 <span class="text-white font-bold bg-red-600 px-2 py-1 rounded">2 小时</span> 极速抵达现场。
+        <br class="hidden md:block" />
+        15 年原厂经验工程师，携带备件上门，确保业务快速恢复。
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="tel:400-888-8888" class="flex items-center justify-center px-8 py-5 bg-white text-red-600 font-bold text-xl rounded-full shadow-lg hover:bg-gray-100 transition-all hover:scale-105 w-full sm:w-auto">
+          <PhoneCall class="w-6 h-6 mr-3" />
+          立即拨打 400-888-8888
+        </a>
+        <a href="#form" class="flex items-center justify-center px-8 py-5 bg-red-700/50 border border-red-500 text-white font-bold text-xl rounded-full hover:bg-red-700 transition-all w-full sm:w-auto backdrop-blur-sm">
+          在线提交工单
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="py-16 bg-theme-surface border-b border-theme-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <div>
+          <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Clock class="w-8 h-8" />
+          </div>
+          <h3 class="text-xl font-bold text-theme-text mb-3">2 小时极速达</h3>
+          <p class="text-theme-muted">
+            依托上海 3 个备件库和 20+ 驻点工程师，内环内 1 小时，外环 2 小时必达。
+          </p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <ShieldAlert class="w-8 h-8" />
+          </div>
+          <h3 class="text-xl font-bold text-theme-text mb-3">原厂级修复</h3>
+          <p class="text-theme-muted">
+            100% 原厂全新备件，拒绝二手翻新。工程师均持 Dell 认证上岗。
+          </p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 class="w-8 h-8" />
+          </div>
+          <h3 class="text-xl font-bold text-theme-text mb-3">修好付费</h3>
+          <p class="text-theme-muted">
+            先维修后付款。如无法修复故障，不收取任何费用（上门费除外）。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Map & Form -->
+  <section id="form" class="py-20 bg-theme-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Map/Info -->
+        <div>
+          <h2 class="text-3xl font-bold text-theme-text mb-6">服务覆盖区域</h2>
+          <p class="text-theme-muted mb-8">
+            我们的救援网络覆盖上海全境及周边长三角核心城市。
+          </p>
+          <div class="bg-slate-200 dark:bg-slate-800 rounded-2xl h-80 flex items-center justify-center text-slate-400 mb-8">
+            <MapPin class="w-12 h-12 mr-2" />
+            [上海地图示意：浦东、徐汇、闵行备件库覆盖圈]
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <span class="w-24 font-bold text-theme-text">核心服务区:</span>
+              <span class="text-theme-muted">黄浦、徐汇、长宁、静安、普陀、虹口、杨浦</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-24 font-bold text-theme-text">快速响应区:</span>
+              <span class="text-theme-muted">闵行、宝山、嘉定、金山、松江、青浦、奉贤、崇明</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Form -->
+        <div class="bg-theme-surface p-8 rounded-3xl border border-red-200 dark:border-red-900/30 shadow-2xl shadow-red-500/10">
+          <h3 class="text-2xl font-bold text-theme-text mb-6 flex items-center">
+            <Siren class="w-6 h-6 text-red-500 mr-2 animate-pulse" />
+            紧急报修通道
+          </h3>
+          <form class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-theme-text mb-2">联系人姓名</label>
+              <input type="text" class="w-full px-4 py-3 rounded-lg bg-theme-bg border border-theme-border focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition-all" placeholder="请输入您的称呼" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-theme-text mb-2">紧急联系电话 *</label>
+              <input type="tel" class="w-full px-4 py-3 rounded-lg bg-theme-bg border border-theme-border focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition-all" placeholder="工程师将直接拨打此号码" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-theme-text mb-2">故障设备型号</label>
+              <input type="text" class="w-full px-4 py-3 rounded-lg bg-theme-bg border border-theme-border focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition-all" placeholder="例如：Dell R740" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-theme-text mb-2">故障简述</label>
+              <textarea class="w-full px-4 py-3 rounded-lg bg-theme-bg border border-theme-border focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition-all h-32" placeholder="例如：服务器无法开机，电源灯闪烁..."></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-red-500/30 flex items-center justify-center">
+              立即呼叫救援
+              <ArrowRight class="ml-2 w-5 h-5" />
+            </button>
+            <p class="text-xs text-center text-theme-muted">
+              提交后，值班工程师将在 5 分钟内与您联系。
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Building2, Users, Trophy, Truck } from 'lucide-astro';
+
+const stats = [
+  { label: '行业经验', value: '15+', icon: Trophy },
+  { label: '服务企业', value: '2000+', icon: Building2 },
+  { label: '认证工程师', value: '50+', icon: Users },
+  { label: '备件库存', value: '10000+', icon: Truck },
+];
+---
+
+<Layout title="关于皓戴 | 专注企业级 IT 服务 15 年 | 上海皓戴" keywords="皓戴科技, 上海Dell代理商, 企业IT维保">
+  <!-- Hero -->
+  <section class="py-20 bg-theme-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-theme-text mb-6">
+        专注企业级 IT 服务 <span class="text-blue-600">15 年</span>
+      </h1>
+      <p class="text-xl text-theme-muted max-w-3xl mx-auto leading-relaxed">
+        上海皓戴信息技术有限公司致力于为企业提供从硬件采购、私有化部署到全生命周期维保的一站式解决方案。
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-12 bg-blue-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map(stat => (
+          <div class="text-center text-white">
+            <stat.icon class="w-8 h-8 mx-auto mb-4 opacity-80" />
+            <div class="text-4xl font-bold mb-2">{stat.value}</div>
+            <div class="text-blue-200">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-20 bg-theme-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+        <h2>我们的使命</h2>
+        <p>
+          在数字化转型的浪潮中，企业 IT 基础设施的稳定性至关重要。皓戴科技的使命是成为企业最可靠的 IT 护航者。我们不仅仅提供硬件，更提供让客户安心的服务保障。
+        </p>
+        
+        <h2>核心优势</h2>
+        <ul>
+          <li><strong>原厂级技术实力</strong>：核心团队均来自 Dell 原厂，持有 VCP, CCIE, MCSE 等多项顶级认证。</li>
+          <li><strong>极速响应体系</strong>：在上海浦东、徐汇、嘉定设有三大备件库，实现核心城区 2 小时必达。</li>
+          <li><strong>前沿技术落地</strong>：紧跟 AI 时代步伐，提供 DeepSeek 等大模型的私有化算力构建与调优服务。</li>
+        </ul>
+
+        <h2>联系我们</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose mt-12">
+          <div class="p-6 bg-theme-bg rounded-xl border border-theme-border">
+            <h3 class="text-xl font-bold text-theme-text mb-4">总部地址</h3>
+            <p class="text-theme-muted">上海市徐汇区宜山路 700 号普天信息产业园</p>
+          </div>
+          <div class="p-6 bg-theme-bg rounded-xl border border-theme-border">
+            <h3 class="text-xl font-bold text-theme-text mb-4">服务热线</h3>
+            <p class="text-theme-muted text-2xl font-bold text-blue-600">400-888-8888</p>
+            <p class="text-sm text-theme-muted mt-2">7x24 小时技术支持</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
