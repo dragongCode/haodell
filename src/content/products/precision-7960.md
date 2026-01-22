@@ -3,7 +3,7 @@ title: "Dell Precision 7960 Tower"
 description: "地表最强塔式工作站，支持 4 块全高显卡与 4TB 内存，影视后期、工业设计与深度学习的终极生产力工具。"
 category: "Workstation"
 price: "询价"
-image: "https://wsrv.nl/?url=https://images.unsplash.com/photo-1593640408182-31c70c8268f5&w=800&output=webp"
+image: "/haodell/images/products/precision-7960.png"
 badge: "性能怪兽"
 specs:
   - label: "处理器"
