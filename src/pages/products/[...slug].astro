@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { ArrowLeft, CheckCircle2, MessageSquare, ShieldCheck, Cpu, HardDrive, Zap } from 'lucide-astro';
+import { ArrowLeft, CheckCircle2, MessageSquare, ShieldCheck, Cpu, HardDrive, Zap, ChevronRight, Server } from 'lucide-astro';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
@@ -13,34 +13,38 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 const { Content } = await product.render();
+
+// Get related products (same category, excluding current)
+const relatedProducts = (await getCollection('products'))
+  .filter(p => p.data.category === product.data.category && p.slug !== product.slug)
+  .slice(0, 3);
 ---
 
 <Layout title={`${product.data.title} | 上海皓戴产品中心`} keywords={`${product.data.title}, ${product.data.category}, Dell服务器报价`}>
   <!-- Breadcrumb & Back -->
-  <div class="bg-theme-bg border-b border-theme-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <a href="/haodell/#products" class="inline-flex items-center text-theme-muted hover:text-blue-600 transition-colors">
-        <ArrowLeft class="w-4 h-4 mr-2" />
-        返回产品列表
-      </a>
+  <div class="bg-theme-bg border-b border-theme-border sticky top-20 z-40 backdrop-blur-md bg-opacity-80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center text-sm">
+      <a href="/haodell/#products" class="text-theme-muted hover:text-blue-600 transition-colors">产品列表</a>
+      <ChevronRight class="w-4 h-4 mx-2 text-theme-muted" />
+      <span class="text-theme-text font-medium truncate">{product.data.title}</span>
     </div>
   </div>
 
   <!-- Hero Section -->
-  <section class="bg-theme-bg py-12 lg:py-20">
+  <section class="bg-theme-bg py-12 lg:py-20 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         <!-- Image -->
-        <div class="relative group">
-          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-          <div class="relative bg-theme-surface rounded-2xl overflow-hidden border border-theme-border shadow-2xl aspect-[4/3]">
+        <div class="relative group order-2 lg:order-1">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+          <div class="relative bg-theme-surface rounded-3xl overflow-hidden border border-theme-border shadow-2xl p-8 flex items-center justify-center aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500">
             <img 
               src={product.data.image} 
               alt={product.data.title}
-              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700"
             />
             {product.data.badge && (
-              <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+              <div class="absolute top-6 left-6 bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-blue-600/30 tracking-wide">
                 {product.data.badge}
               </div>
             )}
@@ -48,21 +52,26 @@ const { Content } = await product.render();
         </div>
 
         <!-- Info -->
-        <div>
-          <div class="text-blue-600 font-bold mb-2 uppercase tracking-wide">{product.data.category}</div>
-          <h1 class="text-4xl lg:text-5xl font-bold text-theme-text mb-6">{product.data.title}</h1>
-          <p class="text-xl text-theme-muted mb-8 leading-relaxed">
+        <div class="order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-xs font-bold uppercase tracking-wider mb-6">
+            <Server class="w-3 h-3" />
+            {product.data.category}
+          </div>
+          <h1 class="text-4xl lg:text-6xl font-bold text-theme-text mb-6 leading-tight">{product.data.title}</h1>
+          <p class="text-xl text-theme-muted mb-10 leading-relaxed">
             {product.data.description}
           </p>
 
           <!-- Key Specs Preview -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
             {product.data.specs.slice(0, 4).map(spec => (
-              <div class="flex items-start p-3 rounded-lg bg-theme-surface border border-theme-border">
-                <CheckCircle2 class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" />
+              <div class="flex items-start p-4 rounded-xl bg-theme-surface border border-theme-border hover:border-blue-500/50 transition-colors group">
+                <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mr-4 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
+                  <CheckCircle2 class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                </div>
                 <div>
-                  <div class="text-xs text-theme-muted uppercase font-bold">{spec.label}</div>
-                  <div class="text-sm font-medium text-theme-text">{spec.value}</div>
+                  <div class="text-xs text-theme-muted uppercase font-bold tracking-wider mb-1">{spec.label}</div>
+                  <div class="text-sm font-bold text-theme-text">{spec.value}</div>
                 </div>
               </div>
             ))}
@@ -85,41 +94,41 @@ const { Content } = await product.render();
   <!-- Content & Specs -->
   <section id="specs" class="py-20 bg-theme-surface border-t border-theme-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <!-- Main Content -->
-        <div class="lg:col-span-2">
-          <h2 class="text-2xl font-bold text-theme-text mb-8 flex items-center">
-            <Zap class="w-6 h-6 text-blue-500 mr-3" />
-            产品详情
-          </h2>
-          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+        <div class="lg:col-span-8">
+          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none 
+            prose-headings:font-bold prose-headings:tracking-tight
+            prose-h2:text-3xl prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-theme-border
+            prose-img:rounded-2xl prose-img:shadow-lg prose-img:my-8
+            prose-ul:space-y-2 prose-li:marker:text-blue-500">
             <Content />
           </div>
         </div>
 
         <!-- Specs Sidebar -->
-        <div class="lg:col-span-1">
-          <div class="bg-theme-bg rounded-2xl p-6 border border-theme-border sticky top-24">
-            <h3 class="text-xl font-bold text-theme-text mb-6 flex items-center">
-              <Cpu class="w-5 h-5 text-blue-500 mr-2" />
-              技术规格
+        <div class="lg:col-span-4">
+          <div class="bg-theme-bg rounded-3xl p-8 border border-theme-border sticky top-32">
+            <h3 class="text-xl font-bold text-theme-text mb-8 flex items-center">
+              <Cpu class="w-6 h-6 text-blue-600 mr-3" />
+              技术规格摘要
             </h3>
-            <div class="space-y-4">
+            <div class="space-y-6">
               {product.data.specs.map(spec => (
-                <div class="pb-4 border-b border-theme-border last:border-0">
-                  <dt class="text-sm text-theme-muted mb-1">{spec.label}</dt>
-                  <dd class="font-medium text-theme-text">{spec.value}</dd>
+                <div class="pb-4 border-b border-theme-border last:border-0 last:pb-0">
+                  <dt class="text-xs font-bold text-theme-muted uppercase tracking-wider mb-2">{spec.label}</dt>
+                  <dd class="font-medium text-theme-text text-sm leading-relaxed">{spec.value}</dd>
                 </div>
               ))}
             </div>
             
-            <div class="mt-8 pt-6 border-t border-theme-border">
-              <div class="flex items-center mb-4 text-green-600 dark:text-green-400">
-                <ShieldCheck class="w-5 h-5 mr-2" />
-                <span class="font-bold text-sm">提供 3-5 年原厂保修</span>
+            <div class="mt-8 pt-6 border-t border-theme-border bg-green-50 dark:bg-green-900/10 -mx-8 -mb-8 p-8 rounded-b-3xl">
+              <div class="flex items-center mb-3 text-green-700 dark:text-green-400">
+                <ShieldCheck class="w-6 h-6 mr-3" />
+                <span class="font-bold">提供 3-5 年原厂保修</span>
               </div>
-              <p class="text-xs text-theme-muted">
-                * 具体配置和价格请咨询销售顾问，支持按需定制 (CTO)。
+              <p class="text-xs text-green-600/80 dark:text-green-400/70 leading-relaxed">
+                * 具体配置和价格请咨询销售顾问，支持按需定制 (CTO) 及上门安装调试服务。
               </p>
             </div>
           </div>
@@ -127,4 +136,25 @@ const { Content } = await product.render();
       </div>
     </div>
   </section>
+
+  <!-- Related Products -->
+  {relatedProducts.length > 0 && (
+    <section class="py-20 bg-theme-bg border-t border-theme-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-theme-text mb-12">更多{product.data.category}产品推荐</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {relatedProducts.map(p => (
+            <a href={`/haodell/products/${p.slug}`} class="group bg-theme-surface rounded-2xl p-6 border border-theme-border hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div class="aspect-[4/3] bg-theme-bg rounded-xl mb-6 overflow-hidden flex items-center justify-center p-4">
+                <img src={p.data.image} alt={p.data.title} class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">{p.data.category}</div>
+              <h3 class="text-lg font-bold text-theme-text mb-2 group-hover:text-blue-600 transition-colors">{p.data.title}</h3>
+              <p class="text-sm text-theme-muted line-clamp-2">{p.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
