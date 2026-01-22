@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { Server, Cpu, Shield, ArrowRight, CheckCircle2, Zap, Database, PhoneCall, BookOpen, FileText } from 'lucide-astro';
+import { Server, Cpu, Shield, ArrowRight, CheckCircle2, Zap, Database, PhoneCall, BookOpen, FileText, HelpCircle } from 'lucide-astro';
 import { seoKeywords } from '../data/products';
 
 const featuredProducts = await getCollection('products');
@@ -227,6 +227,13 @@ const latestPosts = (await getCollection('posts')).sort(
 						</div>
 					</div>
 				))}
+			</div>
+
+			<div class="mt-12 text-center">
+				<a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-blue-100 dark:border-blue-900/50 rounded-full text-theme-muted hover:text-theme-accent hover:border-theme-accent hover:bg-theme-bg transition-all duration-300">
+					<HelpCircle class="mr-2 w-4 h-4" />
+					查看更多问题
+				</a>
 			</div>
 		</div>
 	</section>
