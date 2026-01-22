@@ -71,4 +71,4 @@ python -m vllm.entrypoints.openai.api_server \
 ---
 
 **需要本地算力解决方案？**
-皓戴科技提供预装 DeepSeek / Llama 3 环境的 Dell AI 工作站租赁与销售服务。开箱即用，无需折腾驱动与环境。
+上海皓戴提供预装 DeepSeek / Llama 3 环境的 Dell AI 工作站租赁与销售服务。开箱即用，无需折腾驱动与环境。

@@ -29,7 +29,7 @@ const formatDate = (date: Date) => {
 				<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">实战指南</span>
 			</h1>
 			<p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-				从 Dell PowerEdge 故障排查到私有化大模型部署，这里汇集了皓戴技术团队 15 年的一线实战经验。
+				从 Dell PowerEdge 故障排查到私有化大模型部署，这里汇集了上海皓戴技术团队 15 年的一线实战经验。
 			</p>
 		</div>
 	</section>
@@ -40,7 +40,7 @@ const formatDate = (date: Date) => {
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{posts.map((post) => (
 					<article class="flex flex-col bg-theme-surface rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-						<a href={`/knowledge/${post.slug}`} class="block aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+						<a href={`/haodell/knowledge/${post.slug}`} class="block aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
 							{post.data.image && (
 								<img 
 									src={post.data.image} 
@@ -59,7 +59,7 @@ const formatDate = (date: Date) => {
 								))}
 							</div>
 							<h2 class="text-xl font-bold text-theme-text mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-								<a href={`/knowledge/${post.slug}`}>
+								<a href={`/haodell/knowledge/${post.slug}`}>
 									{post.data.title}
 								</a>
 							</h2>

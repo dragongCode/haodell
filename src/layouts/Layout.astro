@@ -17,7 +17,7 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/haodell/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,8 +67,8 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between items-center h-20">
 					<!-- Logo 区域 -->
-					<a href="/" class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
-						<img src="/logo.png" alt="上海皓戴 Logo" class="w-auto h-10 object-contain" />
+					<a href="/haodell/" class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+						<img src="/haodell/logo.png" alt="上海皓戴 Logo" class="w-auto h-10 object-contain" />
 						<div class="flex flex-col">
 							<span class="text-xl font-bold tracking-tight text-white transition-colors">上海皓戴</span>
 							<span class="text-[10px] text-slate-400 font-medium tracking-wider uppercase transition-colors">Enterprise IT Solutions</span>
@@ -78,7 +78,7 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 					<!-- 桌面端菜单 -->
 					<nav class="hidden md:flex items-center gap-2">
 						<!-- 原厂续保 (第一位) -->
-						<a href="/services/server-warranty" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
+						<a href="/haodell/services/server-warranty" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
 							原厂续保
 						</a>
 
@@ -86,7 +86,7 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 						<div class="w-px h-4 bg-white/10"></div>
 
 						<!-- 服务器/工作站 -->
-						<a href="/products/r760" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
+						<a href="/haodell/products/r760" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
 							服务器/工作站
 						</a>
 
@@ -94,7 +94,7 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 						<div class="w-px h-4 bg-white/10"></div>
 
 						<!-- AI算力方案 -->
-						<a href="/knowledge/deepseek-deployment-guide" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
+						<a href="/haodell/knowledge/deepseek-deployment-guide" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
 							AI算力方案
 						</a>
 
@@ -128,13 +128,13 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 
 						<!-- 常见问题 -->
 						<div class="relative group">
-							<a href="/#qa" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 group-hover:text-white group-hover:bg-white/5 border border-transparent group-hover:border-white/10 transition-all duration-300">
+							<a href="/haodell/#qa" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 group-hover:text-white group-hover:bg-white/5 border border-transparent group-hover:border-white/10 transition-all duration-300">
 								常见问题
 								<svg class="w-4 h-4 ml-1 opacity-50 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 							</a>
 							<div class="absolute left-0 pt-2 w-48 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
 								<div class="bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 overflow-hidden">
-									<a href="/knowledge" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/10 transition-colors">
+									<a href="/haodell/knowledge" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/10 transition-colors">
 										知识库
 									</a>
 								</div>
@@ -145,23 +145,36 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 						<div class="w-px h-4 bg-white/10"></div>
 
 						<!-- 关于我们 -->
-						<a href="/about" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
+						<a href="/haodell/about" class="flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-theme-accent/10 transition-all duration-300">
 							关于我们
 						</a>
 					</nav>
 
 					<!-- 右侧功能区 -->
 					<div class="hidden md:flex items-center space-x-6">
-						<a href="/en" class="text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-widest">EN / 中文</a>
-						<div class="relative group">
-							<a href="https://www.dell.com/support/home/zh-cn" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-theme-accent hover:bg-theme-accent-hover text-white font-medium shadow-md shadow-theme-accent/30 hover:shadow-lg transition-all duration-300">
-								<ShieldCheck class="w-4 h-4" />
-								<span class="text-sm">续保查询</span>
-							</a>
-							<div class="absolute top-full left-0 pt-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-								<a href="https://www.dell.com/support/home/zh-cn/servicecenter" target="_blank" class="flex items-center justify-center px-6 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium shadow-xl border border-white/10 transition-all duration-300 whitespace-nowrap">
-									戴尔服务点查询
-								</a>
+						<a href="/haodell/en" class="text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-widest">EN / 中文</a>
+						<div class="flex items-center gap-3">
+							<!-- 续保与支持 (下拉菜单) -->
+							<div class="relative group">
+								<button class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-theme-accent hover:bg-theme-accent-hover text-white font-medium shadow-md shadow-theme-accent/30 hover:shadow-lg transition-all duration-300">
+									<ShieldCheck class="w-4 h-4" />
+									<span class="text-sm">续保查询</span>
+									<ChevronDown class="w-3 h-3 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
+								</button>
+								
+								<!-- 下拉面板 -->
+								<div class="absolute top-full right-0 mt-2 w-48 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden z-[70]">
+									<div class="py-1">
+										<a href="https://www.dell.com/support/home/zh-cn" target="_blank" class="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/10 transition-colors">
+											<ShieldCheck class="w-4 h-4 text-theme-accent" />
+											官方续保查询
+										</a>
+										<a href="https://www.dell.com/support/home/zh-cn/servicecenter" target="_blank" class="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/10 transition-colors border-t border-white/5">
+											<svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+											服务点查询
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -176,26 +189,26 @@ const { title, description = "上海皓戴信息技术 - 戴尔/联想企业级�
 		<!-- 底部 Footer -->
 		<footer class="bg-slate-800 text-slate-400 py-12 border-t border-slate-700">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-				<div class="col-span-1 md:col-span-2">
-					<span class="text-2xl font-bold text-white">Haodell</span>
+				<div class="lg:col-span-2">
+					<span class="text-2xl font-bold text-white">上海皓戴</span>
 					<p class="mt-4 text-sm leading-6 max-w-md">
 						专注企业级 IT 基础设施服务 15 年。作为 Dell Technologies 和 Lenovo 的授权合作伙伴，我们致力于为企业提供从硬件采购、私有云部署到全生命周期维保的一站式解决方案。
 					</p>
 				</div>
 				<div>
 					<h3 class="text-sm font-semibold text-white tracking-wider uppercase">核心业务</h3>
-					<ul class="mt-4 space-y-3 text-sm">
-						<li><a href="/products/r760" class="hover:text-blue-400 transition">PowerEdge 服务器</a></li>
-						<li><a href="/knowledge/deepseek-deployment-guide" class="hover:text-blue-400 transition">AI 私有化算力搭建</a></li>
-						<li><a href="/services/server-warranty" class="hover:text-blue-400 transition">Dell 原厂续保服务</a></li>
-						<li><a href="/emergency-rescue" class="hover:text-red-400 transition font-bold text-red-400">紧急救援 (2小时达)</a></li>
+					<ul class="mt-4 space-y-2 text-sm">
+						<li><a href="/haodell/products/r760" class="hover:text-blue-400 transition">PowerEdge 服务器</a></li>
+						<li><a href="/haodell/knowledge/deepseek-deployment-guide" class="hover:text-blue-400 transition">AI 私有化算力搭建</a></li>
+						<li><a href="/haodell/services/server-warranty" class="hover:text-blue-400 transition">Dell 原厂续保服务</a></li>
+						<li><a href="/haodell/emergency-rescue" class="hover:text-red-400 transition font-bold text-red-400">紧急救援 (2小时达)</a></li>
 					</ul>
 				</div>
 				<div>
 					<h3 class="text-sm font-semibold text-white tracking-wider uppercase">联系我们</h3>
 					<ul class="mt-4 space-y-3 text-sm">
 						<li>上海市普陀区中山北路3300号</li>
-						<li>400-888-XXXX (7x24小时)</li>
+						<li>400-888-8888 (7x24小时)</li>
 						<li>support@haodell.com</li>
 					</ul>
 				</div>

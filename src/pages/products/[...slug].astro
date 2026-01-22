@@ -15,11 +15,11 @@ const { product } = Astro.props;
 const { Content } = await product.render();
 ---
 
-<Layout title={`${product.data.title} | 皓戴产品中心`} keywords={`${product.data.title}, ${product.data.category}, Dell服务器报价`}>
+<Layout title={`${product.data.title} | 上海皓戴产品中心`} keywords={`${product.data.title}, ${product.data.category}, Dell服务器报价`}>
   <!-- Breadcrumb & Back -->
   <div class="bg-theme-bg border-b border-theme-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <a href="/#products" class="inline-flex items-center text-theme-muted hover:text-blue-600 transition-colors">
+      <a href="/haodell/#products" class="inline-flex items-center text-theme-muted hover:text-blue-600 transition-colors">
         <ArrowLeft class="w-4 h-4 mr-2" />
         返回产品列表
       </a>
